@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+</head>
+<body>
+<h1>Lista de Tarefas</h1>
+    <ul>
+        {% for x in tarefas %}
+            <li><strong>Nome:</strong> {{ x.nome }}</li>
+            <li><strong>Status:</strong>{% if x.status == True%}Concluído {% else %}Não concluído{% endif %}</li>
+            <li><strong>Prazo:</strong> {{x.prazo}}</li>
+            <strong>Situação:</strong> 
+                {% if x.prazo < hoje and not x.status %}>
+                    <b style="color: red;">Atrasado</b>
+                {% else %}
+                    <span style="color: green;">Em dia</span>
+                {% endif %}
+            
+            <hr> {% endfor %}
+    </ul>
+</body>
+</html>
